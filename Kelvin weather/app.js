@@ -1,5 +1,5 @@
 // a constand(wont change later) variable is being created
-const kelvin = 300;
+const kelvin = 200;
 
 // getting celsius value
 let celsius = kelvin - 273;
