@@ -64,3 +64,8 @@ Get the user’s choice.
 Get the computer’s choice.
 Compare the two choices and determine a winner.
 Start the program and display the results.
+
+Secret message
+-------------------------------------------------
+
+Transforming strings into a secret message using arrays
