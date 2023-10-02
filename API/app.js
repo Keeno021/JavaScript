@@ -1,6 +1,6 @@
 /* The behavior of async / await is similar to combining generators and promises. Async functions always return a promise.*/
 
-const url = 'https://rickandmortyapi.com/api/character/1';
+const url = 'https://rickandmortyapi.com/api/character/3';
 
 async function getData() {
 const request = new Request(url,{
@@ -25,7 +25,7 @@ div.appendChild(heading);
 const img = document.createElement("img");
   img.src = data.image;
   div.appendChild(img);
-  document.body.style.backgroundImage = "url('" + data.image + "')";
+  document.body = "url('" + data.image + "')";
 
 }
 
