@@ -1,12 +1,4 @@
 /* The behavior of async / await is similar to combining generators and promises. Async functions always return a promise.*/
-
-// fetching api when api token is needed
-// const request = new Request(url,{
-//     // headers : {
-//     //     'Authorization': 'Bearer BQDBKJ5eo5jxbtpWjVOj7ryS84khybFpP_lTqzV7uV-T_m0cTfwvdn5BnBSKPxKgEb11'
-//     // }
-// }) 
-
 async function fetchCharacter() {
   const characterId = document.getElementById('characterId').value;
 
@@ -14,7 +6,14 @@ async function fetchCharacter() {
     const apiUrl = `https://rickandmortyapi.com/api/character/${characterId}`;
 
     try {
-      const response = await fetch(apiUrl);
+      const request = new Request(apiUrl,{
+        // fetching api when api token is needed
+        headers : {
+          //api token
+          // 'Authorization': 'Bearer BQDBKJ5eo5jxbtpWjVOj7ryS84khybFpP_lTqzV7uV-T_m0cTfwvdn5BnBSKPxKgEb11'
+        }
+      })
+      const response = await fetch(request);
       const data = await response.json();
       // console.log(data);
       displayCharacter(data);
