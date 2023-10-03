@@ -1,33 +1,41 @@
 /* The behavior of async / await is similar to combining generators and promises. Async functions always return a promise.*/
 
-const url = 'https://rickandmortyapi.com/api/character/3';
+// fetching api when api token is needed
+// const request = new Request(url,{
+//     // headers : {
+//     //     'Authorization': 'Bearer BQDBKJ5eo5jxbtpWjVOj7ryS84khybFpP_lTqzV7uV-T_m0cTfwvdn5BnBSKPxKgEb11'
+//     // }
+// }) 
 
-async function getData() {
-const request = new Request(url,{
-    // fetching api when api token is needed
-    // headers : {
-    //     'Authorization': 'Bearer BQDBKJ5eo5jxbtpWjVOj7ryS84khybFpP_lTqzV7uV-T_m0cTfwvdn5BnBSKPxKgEb11'
-    // }
-}) 
+async function fetchCharacter() {
+  const characterId = document.getElementById('characterId').value;
 
-const response = await fetch(request);
-const data = await response.json();
-console.log(data);
+  if (characterId) {
+    const apiUrl = `https://rickandmortyapi.com/api/character/${characterId}`;
 
-//name
-const div = document.getElementById("name");
-const name = data.name;
-const heading = document.createElement("h1");
-heading.innerHTML = name;
-div.appendChild(heading);
-
-//img
-const img = document.createElement("img");
-  img.src = data.image;
-  div.appendChild(img);
-  document.body = "url('" + data.image + "')";
-
+    try {
+      const response = await fetch(apiUrl);
+      const data = await response.json();
+      // console.log(data);
+      displayCharacter(data);
+    } catch (error) {
+      console.error('Error fetching character:', error);
+    } 
+  } else {
+    console.log('Please enter a valid character ID.');
+  }
 }
 
-getData()
+function displayCharacter(character) {
+  const characterInfoDiv = document.getElementById('characterInfo');
+  characterInfoDiv.innerHTML = `
+    <h2>Character Information:</h2>
+    <p>Name: ${character.name}</p>
+    <p>Status: ${character.status}</p>
+    <p>Species: ${character.species}</p>
+    <p>Location: ${character.location.name}</p>
+    <p>Image:<br> <img src="${character.image}" alt="${character.name}"></p>
+  `;
+}
+
      
