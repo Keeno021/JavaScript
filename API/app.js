@@ -26,6 +26,7 @@ async function fetchCharacter() {
 }
 
 function displayCharacter(character) {
+  //getting div
   const characterInfoDiv = document.getElementById('characterInfo');
   characterInfoDiv.innerHTML = `
     <h2>Character Information:</h2>
