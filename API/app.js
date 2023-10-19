@@ -15,7 +15,7 @@ async function fetchCharacter() {
       })
       const response = await fetch(request);
       const data = await response.json();
-      // console.log(data);
+      console.log(data);
       displayCharacter(data);
     } catch (error) {
       console.error('Error fetching character:', error);
